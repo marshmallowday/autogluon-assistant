@@ -4,7 +4,7 @@ import pandas as pd
 import pytest
 from omegaconf import OmegaConf
 
-from autogluon.assistant import run_assistant
+from autogluon.assistant.coding_agent import run_agent
 
 
 @pytest.fixture
@@ -61,19 +61,13 @@ def light_config():
 
 
 def test_titanic_prediction(titanic_data_path, light_config):
-    # Convert config to string overrides
-    config_overrides = [
-        f"llm.provider={light_config.llm.provider}",
-        f"llm.model={light_config.llm.model}",
-        f"autogluon.predictor_fit_kwargs.presets={light_config.autogluon.predictor_fit_kwargs.presets}",
-        f"time_limit={light_config.time_limit}",
-        "feature_transformers.enabled_models=null",
-    ]
-
-    # Run assistant with config overrides
-    output_file = run_assistant(
-        task_path=titanic_data_path, presets="medium_quality", config_overrides=config_overrides
+    output_dir = titanic_data_path
+    run_agent(
+        input_data_folder=titanic_data_path,
+        output_folder=output_dir,
+        max_iterations=3,
     )
+    output_file = os.path.join(output_dir, "results.csv")
 
     # Load original test data and predictions
     test_data = pd.read_csv(os.path.join(titanic_data_path, "test.csv"))
