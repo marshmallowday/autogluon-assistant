@@ -1,6 +1,5 @@
 VALID_CODING_LANGUAGES = ["python", "bash"]
 LOGO_PATH = "static/page_icon.png"
-DEMO_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 DEFAULT_SESSION_VALUES = {
     "config_overrides": [],
