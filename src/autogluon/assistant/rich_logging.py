@@ -1,12 +1,12 @@
 import logging
+from pathlib import Path
 
 from rich.console import Console
 from rich.logging import RichHandler
 
-# ── Custom log levels ─────────────────────────────
-MODEL_INFO_LEVEL = 19
-BRIEF_LEVEL = 25
+from autogluon.assistant.constants import BRIEF_LEVEL, MODEL_INFO_LEVEL
 
+# ── Custom log levels ─────────────────────────────
 logging.addLevelName(MODEL_INFO_LEVEL, "MODEL_INFO")
 logging.addLevelName(BRIEF_LEVEL, "BRIEF")
 
@@ -37,3 +37,22 @@ def configure_logging(level: int) -> None:
         handlers=[RichHandler(console=console, markup=True, rich_tracebacks=True)],
         force=True,  # Ensure override
     )
+
+
+def attach_file_logger(output_dir: Path):
+    """
+    Create a logs.txt file under output_dir to record all logs at DEBUG level and above.
+    """
+    log_path = output_dir / "logs.txt"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    fh = logging.FileHandler(str(log_path), mode="w", encoding="utf-8")
+    fh.setLevel(logging.DEBUG)
+
+    fmt = logging.Formatter(
+        "%(asctime)s %(levelname)-8s [%(name)s] %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+    fh.setFormatter(fmt)
+
+    logging.getLogger().addHandler(fh)

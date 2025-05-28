@@ -81,49 +81,43 @@ WIP
 
 ### CLI
 
-The main script `run.py` provides a command-line interface with the following options:
 
 ```bash
-mlzero -i INPUT_DATA_FOLDER [-o OUTPUT_DIR] [-c CONFIG_PATH] [-n MAX_ITERATIONS] [--need_user_input] [-u INITIAL_USER_INPUT] [-e EXTRACT_TO] [-v|-vv] [-m]
+mlzero -i INPUT_DATA_FOLDER [-c CONFIG_PATH] [-n MAX_ITERATIONS] [-u INITIAL_USER_INPUT]
 ```
 
-Arguments:
 
-- `-i, --input`: Path to the folder containing input data (required)
-- `-o, --output`: Path to the output directory for generated files (optional; if omitted, will be auto-created under runs/)
-- `-c, --config`: Path to the configuration YAML file (optional; default is configs/default.yaml)
-- `-n, --max-iterations`: Maximum number of iterations for code generation (default: 5)
-- `--need-user-input`: Enable user input between iterations (optional flag)
-- `-u, --user-input`: Initial user input at the beginning (optional)
-- `-e, --extract-to`: Extract archive files to a separate directory (optional)
-- `-v, --verbosity`: Set verbosity to INFO; use -vv for DEBUG
-- `-m, --model-info`: Show MODEL_INFO level logs
+### Required Arguments
 
-You can control the logging level via CLI flags:
+- `-i, --input`:  
+  Path to the input data folder. This directory should contain training/testing files and optionally a description file.
 
-- `-v`: Enables `INFO` level logs2 
-- `-vv`: Enables `DEBUG` level logs
-- `-m`, `--model-info`: Enables `MODEL_INFO` level logs (e.g., GPU usage, training details)
-- **No flags**: Defaults to `BRIEF`
+### Optional Arguments
 
-> **Note**: `-v`/`-vv` and `-m` are **mutually exclusive** — only one can be used at a time.
-> ⚠️ **Note**: `--model-info` and `-vv` (debug mode) are still under development and may produce excessive or unfiltered output.
+- `-c, --config`:  
+  Path to the YAML configuration file. Default: `configs/default.yaml`.
 
-Example:
+- `-n, --max-iterations`:  
+  Maximum number of iterations. Default is `5`.
+
+- `-u, --user-input`:  
+  Initial user input to use in the first iteration. Optional.
+
+> **Note:** For more optional arguments and examples, see the [CLI tutorial](https://github.com/autogluon/autogluon-assistant/tree/main/docs/tutorials/cli_tutorial.md).
+
+### Examples
+
 ```bash
-mlzero \
-  -i ./datasets/airbnb_melbourne/training \
-  -o ./output \
-  -c ./my_config.yaml \
-  -n 5 \
-  --need-user-input
+# Basic usage
+mlzero -i ./data
 
-mlzero -i ./data_path -o ./output -n 3 -v
-```
+# Custom output directory and set limit to 3 iterations
+mlzero -i ./data -n 3
 
 
 #### Overriding Configs
 You can always provide a config to override default config.
+```
 
 
 ## Citation

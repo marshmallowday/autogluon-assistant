@@ -40,6 +40,7 @@ class ToolSelectorAgent(BaseAgent):
             )
 
     def __call__(self) -> Tuple[str, str]:
+        self.manager.log_agent_start("ToolSelectorAgent: choosing the most appropriate ML library for the task.")
 
         # Build prompt for tool selection
         prompt = self.tool_selector_prompt.build()
@@ -54,5 +55,7 @@ class ToolSelectorAgent(BaseAgent):
         response = self.tool_selector_llm.assistant_chat(prompt)
 
         selected_tool = self.tool_selector_prompt.parse(response)
+
+        self.manager.log_agent_end("ToolSelectorAgent: selected tool and recorded justification.")
 
         return selected_tool

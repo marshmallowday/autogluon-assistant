@@ -309,7 +309,7 @@ class Manager:
         )
 
         if planner_decision == "FIX":
-            logger.info(f"Code generation failed in iteration {self.time_step}!")
+            logger.brief(f"[bold red]Code generation failed in iteration[/bold red] {self.time_step}!")
             # Add suggestions to the error message to guide next iteration
             error_message = f"stderr: {stderr}\n\n" if stderr else ""
             error_message += (
@@ -318,7 +318,9 @@ class Manager:
             self.update_error_message(error_message=error_message)
             return False
         elif planner_decision == "FINISH":
-            logger.info(f"Code generation successful after {self.time_step + 1} iterations")
+            logger.brief(
+                f"[bold green]Code generation successful after[/bold green] {self.time_step + 1} [bold green]iterations[/bold green]"
+            )
             self.update_error_message(error_message="")
             return True
         else:
@@ -358,6 +360,20 @@ class Manager:
             else:
                 file.write("<None>")
 
+    def log_agent_start(self, message: str):
+        logger.info(message)
+
+    def log_agent_end(self, message: str):
+        logger.brief(message)
+
     def report_token_usage(self):
         token_usage_path = os.path.join(self.output_folder, "token_usage.json")
-        logger.info(f"Token Usage:\n{ChatLLMFactory.get_total_token_usage(save_path=token_usage_path)}")
+        usage = ChatLLMFactory.get_total_token_usage(save_path=token_usage_path)
+        total = usage["total"]
+        logger.brief(
+            f"Total tokens — input: {total['total_input_tokens']}, "
+            f"output: {total['total_output_tokens']}, "
+            f"sum: {total['total_tokens']}"
+        )
+
+        logger.info(f"Full token usage detail:\n{usage}")

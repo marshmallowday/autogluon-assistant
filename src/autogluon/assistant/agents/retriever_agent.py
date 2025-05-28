@@ -36,6 +36,9 @@ class RetrieverAgent(BaseAgent):
 
     def __call__(self):
         """Select relevant tutorials and format them into a prompt."""
+
+        self.manager.log_agent_start("RetrieverAgent: selecting relevant tutorials based on task context.")
+
         # Build prompt for tutorial selection
         prompt = self.retrieval_prompt.build()
 
@@ -51,6 +54,8 @@ class RetrieverAgent(BaseAgent):
 
         # Generate tutorial prompt using selected tutorials
         tutorial_prompt = self._generate_tutorial_prompt(selected_tutorials)
+
+        self.manager.log_agent_end("RetrieverAgent: tutorial selection complete and prompt formatted.")
 
         return tutorial_prompt
 

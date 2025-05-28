@@ -7,13 +7,10 @@ from pathlib import Path
 import typer
 
 from autogluon.assistant.coding_agent import run_agent
+from autogluon.assistant.constants import BRIEF_LEVEL, MODEL_INFO_LEVEL
 
 from .. import __file__ as assistant_file
-from .rich_logging import (
-    BRIEF_LEVEL,
-    MODEL_INFO_LEVEL,
-    configure_logging,
-)
+from ..rich_logging import configure_logging
 
 PACKAGE_ROOT = Path(assistant_file).parent
 DEFAULT_CONFIG_PATH = PACKAGE_ROOT / "configs" / "default.yaml"
@@ -44,30 +41,30 @@ def main(
         None, "-e", "--extract-to", help="Directory in which to unpack any archives"
     ),
     # === Logging parameters ===
-    verbosity: int = typer.Option(0, "-v", "--verbosity", count=True, help="-v => INFO, -vv => DEBUG"),
-    model_info: bool = typer.Option(False, "-m", "--model-info", help="Show MODEL_INFO level logs"),
+    verbosity: int = typer.Option(0, "-v", "--verbosity", help="Verbosity level (0–7)"),
 ):
     """
     mlzero: a CLI for running the AutoMLAgent pipeline.
     """
 
-    if model_info and verbosity > 0:
-        typer.secho(
-            "Error: `-m/--model-info` and `-v/--verbosity` are mutually exclusive; pick only one.",
-            fg="red",
-            err=True,
-        )
-        raise typer.Exit(code=1)
-
     # 1) Configure logging
-    if model_info:
-        level = MODEL_INFO_LEVEL
-    elif verbosity >= 2:
-        level = logging.DEBUG
-    elif verbosity == 1:
-        level = logging.INFO
-    else:
-        level = BRIEF_LEVEL
+    match verbosity:
+        case 0:
+            level = BRIEF_LEVEL
+        case 1:
+            level = logging.CRITICAL
+        case 2:
+            level = logging.ERROR
+        case 3:
+            level = logging.WARNING
+        case 4:
+            level = BRIEF_LEVEL
+        case 5:
+            level = logging.INFO
+        case 6:
+            level = MODEL_INFO_LEVEL
+        case _:
+            level = logging.DEBUG
     configure_logging(level)
 
     # 2) If the user specified output_dir, ensure its parent directory exists;

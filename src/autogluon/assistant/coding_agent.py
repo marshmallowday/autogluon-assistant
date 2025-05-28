@@ -6,30 +6,12 @@ from pathlib import Path
 
 from omegaconf import OmegaConf
 
+from autogluon.assistant.rich_logging import attach_file_logger
+
 from .managers import Manager
 from .utils import extract_archives
 
 logger = logging.getLogger(__name__)
-
-
-MODEL_INFO_LEVEL = 19
-BRIEF_LEVEL = 25
-logging.addLevelName(MODEL_INFO_LEVEL, "MODEL_INFO")
-logging.addLevelName(BRIEF_LEVEL, "BRIEF")
-
-
-def model_info(self, msg, *args, **kw):
-    if self.isEnabledFor(MODEL_INFO_LEVEL):
-        self._log(MODEL_INFO_LEVEL, msg, args, **kw)
-
-
-def brief(self, msg, *args, **kw):
-    if self.isEnabledFor(BRIEF_LEVEL):
-        self._log(BRIEF_LEVEL, msg, args, **kw)
-
-
-logging.Logger.model_info = model_info  # type: ignore
-logging.Logger.brief = brief  # type: ignore
 
 
 def run_agent(
@@ -65,6 +47,7 @@ def run_agent(
     output_dir = Path(output_folder).expanduser().resolve()
     output_dir.parent.mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=False, exist_ok=True)
+    attach_file_logger(output_dir)
 
     if extract_archives_to is not None:
         if extract_archives_to and extract_archives_to != input_data_folder:
@@ -119,7 +102,7 @@ def run_agent(
     )
 
     while manager.time_step + 1 < max_iterations:
-        logger.info(f"Starting iteration {manager.time_step + 1}!")
+        logger.brief(f"Starting iteration {manager.time_step + 1}!")
 
         # TODO: move user_input logic to manager?
         user_input = None
@@ -129,8 +112,8 @@ def run_agent(
         # Get per iter user inputs if needed
         if need_user_input:
             if manager.time_step + 1 > 0:
-                logger.info(
-                    f"\nPrevious iteration files are in: {os.path.join(output_folder, f'iteration_{manager.time_step}')}"
+                logger.brief(
+                    f"\n[bold green]Previous iteration files are in:[/bold green] {os.path.join(output_folder, f'iteration_{manager.time_step}')}"
                 )
             user_input += input("Enter your inputs for this iteration (press Enter to skip): ")
 
@@ -145,6 +128,9 @@ def run_agent(
             break
 
         if manager.time_step + 1 >= max_iterations:
-            logger.warning(f"Warning: Reached maximum iterations ({max_iterations}) without success")
+            logger.warning(
+                f"[bold red]Warning: Reached maximum iterations ({max_iterations}) without success[/bold red]"
+            )
 
     manager.report_token_usage()
+    logger.brief(f"output saved in {output_dir}.")
