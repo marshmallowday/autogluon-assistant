@@ -44,7 +44,7 @@ export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
 ### Basic Usage
 
 ```bash
-mlzero -i <input_data_folder>
+mlzero -i <input_data_folder> [-u <optional_user_instructions>]
 ```
 
 ## Citation
