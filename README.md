@@ -27,7 +27,7 @@ You can install from source (new version will be released to PyPI soon):
 git clone https://github.com/autogluon/autogluon-assistant.git
 cd autogluon-assistant
 pip install uv
-uv pip install -e "."
+uv pip install -e .
 ```
 
 ## Quick Start
