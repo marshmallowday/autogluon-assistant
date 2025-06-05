@@ -24,10 +24,8 @@ AutoGluon Assistant is supported on Python 3.8 - 3.11 and is available on Linux,
 You can install from source (new version will be released to PyPI soon):
 
 ```bash
-git clone https://github.com/autogluon/autogluon-assistant.git
-cd autogluon-assistant
 pip install uv
-uv pip install -e .
+uv pip install git+https://github.com/autogluon/autogluon-assistant.git
 ```
 
 ## Quick Start
