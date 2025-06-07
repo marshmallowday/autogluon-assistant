@@ -45,7 +45,7 @@ We also support OpenAI. More LLM providers' support (e.g. Anthropic, Azure, etc.
 
 ### Basic Usage
 
-![Demo](assets/cli_demo.gif)
+![Demo](https://github.com/autogluon/autogluon-assistant/blob/main/docs/assets/cli_demo.gif)
 
 ```bash
 mlzero -i <input_data_folder> [-u <optional_user_instructions>]
