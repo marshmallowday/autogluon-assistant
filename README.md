@@ -19,7 +19,7 @@ AutoGluon Assistant (aka MLZero) is a multi-agent system that automates end-to-e
 
 ## 💾 Installation
 
-AutoGluon Assistant is supported on Python 3.8 - 3.11 and is available on Linux, MacOS, and Windows.
+AutoGluon Assistant is supported on Python 3.8 - 3.11 and is available on Linux (will fix dependency issues for MacOS and Windows by our next official release).
 
 You can install from source (new version will be released to PyPI soon):
 
