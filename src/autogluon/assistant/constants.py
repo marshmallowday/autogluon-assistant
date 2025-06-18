@@ -1,40 +1,36 @@
 VALID_CODING_LANGUAGES = ["python", "bash"]
 LOGO_PATH = "static/page_icon.png"
-DEMO_URL = "https://automl-mm-bench.s3.amazonaws.com/autogluon-assistant/aga-kaggle-demo.mp4"
+DEMO_URL = "https://youtu.be/kejJ3QJPW7E"
 DETAIL_LEVEL = 19
 BRIEF_LEVEL = 25
 CONSOLE_HANDLER = "console_handler"
 
-DEFAULT_SESSION_VALUES = {
-    "config_overrides": [],
-    "llm": None,
-    "pid": None,
-    "logs": "",
-    "process": None,
-    "clicked": False,
-    "task_running": False,
-    "output_file": None,
-    "output_filename": None,
-    "task_description": "",
-    "sample_description": "",
-    "return_code": None,
-    "task_canceled": False,
-    "uploaded_files": {},
-    "sample_files": {},
-    "selected_dataset": None,
-    "sample_dataset_dir": None,
-    "description_uploader_key": 0,
-    "sample_dataset_selector": None,
-    "current_stage": None,
-    "feature_generation": False,
-    "stage_status": {},
-    "show_remaining_time": False,
-    "model_path": None,
-    "elapsed_time": 0,
-    "progress_bar": None,
-    "increment": 2,
-    "zip_path": None,
-    "start_time": None,
-    "remaining_time": 0,
-    "start_model_train_time": 0,
+API_URL = "http://localhost:5000/api"
+
+# Special markers for WebUI communication
+WEBUI_INPUT_REQUEST = "###WEBUI_INPUT_REQUEST###"
+WEBUI_INPUT_MARKER = "###WEBUI_USER_INPUT###"
+WEBUI_OUTPUT_DIR = "###WEBUI_OUTPUT_DIR###"
+
+# Success message displayed after task completion
+SUCCESS_MESSAGE = """🎉🎉 Task completed successfully! If you found this useful, please consider:
+⭐ [Starring our repository](https://github.com/autogluon/autogluon-assistant)
+⭐ [Citing our paper](https://arxiv.org/abs/2505.13941)"""
+
+# TODO
+IGNORED_MESSAGES = [
+    "Too many requests, please wait before trying again",
+]
+
+VERBOSITY_MAP = {
+    "DETAIL": "3",
+    "INFO": "2",
+    "BRIEF": "1",
+}
+
+# Provider defaults
+PROVIDER_DEFAULTS = {
+    "bedrock": "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+    "openai": "gpt-4o-2024-08-06",
+    "anthropic": "claude-3-7-sonnet-20250219",
 }

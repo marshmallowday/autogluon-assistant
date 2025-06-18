@@ -17,6 +17,7 @@ from ..agents import (
 )
 from ..llm import ChatLLMFactory
 from ..tools_registry import registry
+from ..utils import get_user_input_webui
 
 # Basic configuration
 logging.basicConfig(level=logging.INFO)
@@ -289,9 +290,15 @@ class Manager:
                 )
             if user_input is None:
                 user_input = ""
-            user_input += "\n" + input(
-                f"Enter your inputs for current iteration (iter {self.time_step}) (press Enter to skip): "
-            )
+                if os.environ.get("AUTOGLUON_WEBUI", "false").lower() == "true":
+                    # If running in WebUI, get user input from stdin
+                    user_input += "\n" + get_user_input_webui(
+                        f"Enter your inputs for current iteration (iter {self.time_step}) (press Enter to skip): "
+                    )
+                else:
+                    user_input += "\n" + input(
+                        f"Enter your inputs for current iteration (iter {self.time_step}) (press Enter to skip): "
+                    )
 
         assert len(self.user_inputs) == self.time_step
         self.user_inputs.append(user_input)
@@ -404,7 +411,7 @@ class Manager:
                 file.write("<None>")
 
     def log_agent_start(self, message: str):
-        logger.info(message)
+        logger.brief(message)
 
     def log_agent_end(self, message: str):
         logger.brief(message)
