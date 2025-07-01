@@ -34,7 +34,7 @@ uv pip install git+https://github.com/autogluon/autogluon-assistant.git
 
 For detailed usage instructions, Anthropic/Azure/OpenAI setup, and advanced configuration options, see our [Getting Started Tutorial](docs/tutorials/getting_started.md).
 
-### API Setup
+## API Setup
 MLZero uses AWS Bedrock by default. Configure your AWS credentials:
 
 ```bash
@@ -45,13 +45,27 @@ export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
 
 We also support Anthropic, Azure, and OpenAI. Support for more LLM providers (e.g. DeepSeek, etc.) will be added soon.
 
-### Basic Usage
+## Basic Usage
+
+### CLI UI
 
 ![Demo](https://github.com/autogluon/autogluon-assistant/blob/main/docs/assets/cli_demo.gif)
 
 ```bash
 mlzero -i <input_data_folder> [-u <optional_user_instructions>]
 ```
+
+## WEB UI
+
+![Demo](https://github.com/autogluon/autogluon-assistant/blob/main/docs/assets/web_demo.gif)
+
+```bash
+mlzero-backend # command to start backend
+mlzero-frontend # command to start frontend on 8509(default)
+```
+
+1. **Configure**: Set your model provider and credentials in settings
+2. **Upload & Describe**: Drag your data folder into the chat input box, then type what you want to accomplish and press Enter
 
 ## Citation
 If you use Autogluon Assistant (MLZero) in your research, please cite our paper:
