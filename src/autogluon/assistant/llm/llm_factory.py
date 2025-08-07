@@ -59,11 +59,26 @@ class ChatLLMFactory:
 
         if provider != "sagemaker":
             valid_models = cls.get_valid_models(provider)
-            if model not in valid_models:
-                if model[3:] not in valid_models:  # TODO: better logic for cross region inference
-                    raise ValueError(
-                        f"Invalid model: {model} for provider {provider}. All valid models are {valid_models}. If you are using Bedrock, please check if the requested model is available in the provided AWS_DEFAULT_REGION: {os.environ.get('AWS_DEFAULT_REGION')}"
-                    )
+
+            # confirm the match first
+            is_valid = model in valid_models
+
+            # if Bedrock, allow prefix(apac./us./eu.）
+            if not is_valid and provider == "bedrock":
+                # remove prefix, and check if the model is valid
+                REGION_PREFIXES = {"apac", "us", "eu"}
+                parts = model.split(".", 1)
+                if len(parts) == 2 and parts[0] in REGION_PREFIXES:
+                    model_without_prefix = parts[1]
+                    is_valid = model_without_prefix in valid_models
+
+            if not is_valid:
+                raise ValueError(
+                    f"Invalid model: {model} for provider {provider}. "
+                    f"All valid models are {valid_models}. "
+                    f"If you are using Bedrock, please check if the requested model is available in the provided "
+                    f"AWS_DEFAULT_REGION: {os.environ.get('AWS_DEFAULT_REGION')}"
+                )
 
         if provider == "openai":
             return create_openai_chat(config, session_name)
