@@ -28,7 +28,7 @@ class RerankerAgent(BaseAgent):
 
         if self.reranker_llm_config.multi_turn:
             self.reranker_llm = init_llm(
-                llm_config=self.rerankerl_llm_config,
+                llm_config=self.reranker_llm_config,
                 agent_name="reranker",
                 multi_turn=self.reranker_llm_config.multi_turn,
             )
