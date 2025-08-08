@@ -12,7 +12,7 @@ max_num_tutorials: 5
 max_user_input_length: 2048
 max_error_message_length: 2048
 max_tutorial_length: 32768
-create_venv: False
+create_venv: false 
 condense_tutorials: True
 use_tutorial_summary: True
 continuous_improvement: False
@@ -46,17 +46,8 @@ executer:
 
 
 reader:
-  provider: openai
-  model: "gpt-4.1-2025-04-14"
-  max_tokens: 32768
-  proxy_url: null
-  temperature: 0.1
-  top_p: 0.9
-  verbose: True
-  multi_turn: False
-  template: null
-  add_coding_format_instruction: False
-  details: False
+  <<: *default_llm   
+  details: False  
 
 error_analyzer:
   <<: *default_llm
@@ -83,4 +74,3 @@ tool_selector:
   <<: *default_llm
   temperature: 0.0
   top_p: 1.0
-
