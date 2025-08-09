@@ -1,10 +1,12 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 Summary: "Summary: "Tabular: "Tabular: "Tabular Hypersc 'Hypersc 'Hypertuning 1.Hat 'Hypertuning 'Hypertuning 'Hyperturf: "Hypertuning 'Hyperparred 'Hyperparcel: "Hypertuner: "Hyperturf: "Hypertuner: "Hypertuner: "Hyperturf: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hypertuner: "Hyperparameter Tuning"
 
 Summary: This tutorial demonstrates AutoGluon for automated machine learning with tabular data. It covers: (1) implementing quick ML pipelines with TabularPredictor for automatic feature engineering and model selection; (2) solving classification/regression tasks without manual hyperparameter tuning; and (3) key functionalities including data loading, model training with time constraints, prediction, and performance evaluation through leaderboards. AutoGluon automatically handles the entire ML workflow, recognizing task types and selecting appropriate models, making it ideal for rapid prototyping and building high-performance tabular data models with minimal code.
 
 ```python
 !python -m pip install --upgrade pip
-!python -m pip install autogluon
+!python -m pip install autogluon[tabarena]
 ```
 
 

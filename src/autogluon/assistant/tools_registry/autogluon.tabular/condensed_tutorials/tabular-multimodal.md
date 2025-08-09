@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 # Condensed: ```python
 
 Summary: This tutorial demonstrates using AutoGluon Multimodal for multimodal classification on the PetFinder dataset. It covers: (1) implementing multimodal machine learning with images and tabular data, including proper image path handling and feature metadata configuration; (2) solving pet adoption prediction tasks by integrating different data types; and (3) key functionalities including data preparation for multimodal inputs, configuring feature metadata to identify image columns, creating appropriate hyperparameter configurations, and training a TabularPredictor that automatically handles mixed data types. The tutorial showcases how to process image paths, configure models for multimodal inputs, and evaluate performance on test data.
@@ -9,7 +11,7 @@ Summary: This tutorial demonstrates using AutoGluon Multimodal for multimodal cl
 ## Setup and Data Preparation
 
 ```python
-!pip install autogluon
+!pip install autogluon[tabarena]
 
 # Download and extract dataset
 download_dir = './ag_petfinder_tutorial'

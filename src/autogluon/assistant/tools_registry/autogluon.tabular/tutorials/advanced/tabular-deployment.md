@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 Summary: AutoGluon Tabular predictor deployment tutorial provides a guide to AutoGluon TabularPredictor deployment
 
 AI: Summary: AutoGluon TabularPredictor deployment guide
@@ -17,7 +19,7 @@ Summary: AutoGluon TabularPredictor deployment guide
 AI: Summary: AutoGluon TabularPredictor deployment guide provides practical techniques for optimizing and deploying tabular machine learning models. It covers: (1) implementation knowledge of model cloning, deployment optimization, and compilation for speed; (2) coding tasks including creating lightweight model versions for production and preserving model state; and (3) key features like `clone_for_deployment()` for size reduction, `persist()` for memory optimization, and `compile()` for performance enhancement. The tutorial demonstrates how to reduce disk usage while maintaining prediction capabilities and includes best practices for production deployment.
 
 ```python
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 
 ```
 
@@ -216,8 +218,8 @@ In order to further improve inference efficiency, we can call `.compile()` to au
 convert sklearn function calls into their ONNX equivalents.
 Note that this is currently an experimental feature, which only improves RandomForest and TabularNeuralNetwork models.
 The compilation and inference speed acceleration require installation of `skl2onnx` and `onnxruntime` packages.
-To install supported versions of these packages automatically, we can call `pip install autogluon.tabular[skl2onnx]`
-on top of an existing AutoGluon installation, or `pip install autogluon.tabular[all,skl2onnx]` on a new AutoGluon installation.
+To install supported versions of these packages automatically, we can call `pip install autogluon.tabular[skl2onnx,tabarena]`
+on top of an existing AutoGluon installation, or `pip install autogluon.tabular[all,skl2onnx,tabarena]` on a new AutoGluon installation.
 
 It is important to make sure the predictor is cloned, because once the models are compiled, it won't support fitting.
 
