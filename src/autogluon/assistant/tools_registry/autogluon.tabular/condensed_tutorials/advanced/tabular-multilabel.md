@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 # Condensed: ```python
 
 Summary: This tutorial demonstrates AutoGluon's MultilabelPredictor implementation for predicting multiple target columns simultaneously. It covers creating a custom class that manages multiple TabularPredictors, with methods for training, prediction, evaluation, and model persistence. Key features include handling different problem types (regression, classification) for each target, optional correlation consideration between labels during prediction, and customizable evaluation metrics. The code helps with multi-target machine learning tasks, offering flexibility in how predictions are generated and evaluated. The implementation provides a clean API for training multiple models with a single interface while maintaining individual model access.
@@ -8,7 +10,7 @@ Summary: This tutorial demonstrates AutoGluon's MultilabelPredictor implementati
 
 ## Installation
 ```python
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 ```
 
 ## Implementation

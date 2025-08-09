@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 # Condensed: ```python
 
 Summary: This tutorial demonstrates how to prevent AutoGluon from dropping specific features during preprocessing. It covers three key techniques: (1) creating custom models with the `drop_unique=False` parameter to preserve single-value features, (2) implementing a `CustomFeatureGeneratorWithUserOverride` that uses `IdentityFeatureGenerator` to bypass preprocessing for tagged features, and (3) tagging features with special types like 'user_override' to control their processing. These methods are valuable for maintaining important features in machine learning pipelines, ensuring model interpretability, and handling domain-specific features that shouldn't undergo standard transformations.
@@ -9,7 +11,7 @@ Summary: This tutorial demonstrates how to prevent AutoGluon from dropping speci
 ## Setup and Data Loading
 
 ```python
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 
 from autogluon.tabular import TabularDataset
 

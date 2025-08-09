@@ -1,7 +1,9 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 Summary: This tutorial demonstrates how to implement custom models in AutoGluon by extending the AbstractModel class, specifically creating a custom RandomForest implementation. It covers preprocessing with label encoding, dynamic model selection based on problem type, and proper integration with AutoGluon's ecosystem. Key functionalities include custom model training, feature preprocessing, model saving/loading, bagged ensembles for improved performance, and hyperparameter tuning using search spaces. The tutorial helps with tasks like implementing custom ML algorithms within AutoGluon, integrating models with TabularPredictor, and optimizing model performance through bagging and hyperparameter optimization.
 
 ```python
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 
 ```
 

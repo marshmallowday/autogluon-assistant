@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 Summary: This tutorial demonstrates implementing foundation models for tabular data using AutoGluon. It covers three key models: Mitra (for small datasets with zero-shot and fine-tuning capabilities), TabICL (leveraging in-context learning for limited data), and TabPFNv2 (utilizing prior knowledge for small datasets). The code shows how to prepare data, train individual models for classification and regression tasks, and create ensembles combining multiple foundation models. Developers can learn to implement these specialized tabular models with different configurations, evaluate their performance, and handle both classification and regression problems with small to medium-sized datasets.
 
 ## Installation
@@ -8,9 +10,9 @@ First, let's install AutoGluon with support for foundational models:
 ```python
 # Individual model installations:
 !pip install uv
-!uv pip install autogluon.tabular[mitra]   # For Mitra
-!uv pip install autogluon.tabular[tabicl]   # For TabICL
-!uv pip install autogluon.tabular[tabpfn]   # For TabPFNv2
+!uv pip install autogluon.tabular[mitra,tabarena]   # For Mitra
+!uv pip install autogluon.tabular[tabicl,tabarena]   # For TabICL
+!uv pip install autogluon.tabular[tabpfn,tabarena]   # For TabPFNv2
 
 ```
 

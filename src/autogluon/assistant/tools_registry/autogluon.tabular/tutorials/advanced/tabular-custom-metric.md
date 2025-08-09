@@ -1,7 +1,9 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 Summary: This tutorial demonstrates how to create and use custom evaluation metrics in AutoGluon, focusing on what makes them better for model optimization. It covers the implementation of custom metrics for classification, regression, and probability-based tasks, with examples of accuracy, ROC AUC, and MSE. The metrics are defined using make_scorer and can be used for model evaluation and comparison.
 
 ```python
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 
 ```
 

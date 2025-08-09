@@ -1,3 +1,5 @@
+> **Note:** This tutorial assumes a GPU is available. Install GPU dependencies with `pip install autogluon[tabarena]`.
+
 # Condensed: ```python
 
 Summary: AutoGluon Tabular predictor deployment tutorial provides a guide to AutoGluon TabularPredictor deployment
@@ -26,7 +28,7 @@ AI: Summary: AutoGluon TabularPredictor deployment guide provides practical tech
 
 ```python
 # Install AutoGluon
-!pip install autogluon.tabular[all]
+!pip install autogluon.tabular[all,tabarena]
 
 # Load data and train model
 from autogluon.tabular import TabularDataset, TabularPredictor
@@ -89,7 +91,7 @@ print(f'Optimized predictor achieved a {round((1 - (size_opt/size_original)) * 1
 ## Compile Models for Maximum Speed
 
 ```python
-# Install required packages: pip install autogluon.tabular[all,skl2onnx]
+# Install required packages: pip install autogluon.tabular[all,skl2onnx,tabarena]
 predictor_clone_opt.compile()
 ```
 
