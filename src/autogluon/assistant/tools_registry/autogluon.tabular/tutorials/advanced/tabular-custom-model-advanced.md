@@ -197,11 +197,6 @@ predictor.fit(
     train_data=train_data,
     feature_metadata=feature_metadata,  # feature metadata with your overrides
     feature_generator=feature_generator,  # your custom feature generator that handles the overrides
-    hyperparameters={
-        'GBM': {},  # Can fit your custom model alongside default models
-        DummyModel: {},  # Will drop dummy_feature
-        DummyModelKeepUnique: {},  # Will not drop dummy_feature
-        # DummyModel: {'ag_args_fit': {'drop_unique': False}},  # This is another way to get same result as using DummyModelKeepUnique
-    }
+    # hyperparameters argument intentionally omitted
 )
 ```

@@ -20,9 +20,9 @@ hyperparameters = {
     ]
 }
 predictor = TabularPredictor(label=label).fit(
-    train_data, 
+    train_data,
     num_gpus=1,
-    hyperparameters=hyperparameters, 
+    # hyperparameters argument intentionally omitted
 )
 ```
 
@@ -78,9 +78,7 @@ As an example, consider the following scenario
 predictor.fit(
     num_cpus=32,
     num_gpus=4,
-    hyperparameters={
-        'NN_TORCH': {},
-    },
+    # hyperparameters argument intentionally omitted
     num_bag_folds=2,
     ag_args_ensemble={
         'ag_args_fit': {
