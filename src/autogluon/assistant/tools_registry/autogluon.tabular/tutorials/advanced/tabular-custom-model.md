@@ -269,7 +269,7 @@ from autogluon.tabular import TabularPredictor
 
 # custom_hyperparameters = {CustomRandomForestModel: {}}  # train 1 CustomRandomForestModel Model with default hyperparameters
 custom_hyperparameters = {CustomRandomForestModel: [{}, {'max_depth': 10}, {'max_features': 0.9, 'max_depth': 20}]}  # Train 3 CustomRandomForestModel with different hyperparameters
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters=custom_hyperparameters)
+predictor = TabularPredictor(label=label).fit(train_data)  # Do not specify the hyperparameters argument
 ```
 
 ### Predictor leaderboard
@@ -308,8 +308,8 @@ custom_hyperparameters_hpo = {CustomRandomForestModel: {
 }}
 # Hyperparameter tune CustomRandomForestModel for 20 seconds
 predictor = TabularPredictor(label=label).fit(train_data,
-                                              hyperparameters=custom_hyperparameters_hpo,
-                                              hyperparameter_tune_kwargs='auto',  # enables HPO
+    # Do not specify the hyperparameters argument
+    # Do not specify the hyperparameter_tune_kwargs argument
                                               time_limit=20)
 ```
 
@@ -360,8 +360,8 @@ print(custom_hyperparameters)
 
 
 ```python
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters=custom_hyperparameters)  # Train the default models plus a single tuned CustomRandomForestModel
-# predictor = TabularPredictor(label=label).fit(train_data, hyperparameters=custom_hyperparameters, presets='best_quality')  # We can even use the custom model in a multi-layer stack ensemble
+predictor = TabularPredictor(label=label).fit(train_data)  # Do not specify the hyperparameters argument  # Train the default models plus a single tuned CustomRandomForestModel
+# predictor = TabularPredictor(label=label).fit(train_data, presets='best_quality')  # Do not specify the hyperparameters argument  # We can even use the custom model in a multi-layer stack ensemble
 predictor.leaderboard(test_data)
 ```
 

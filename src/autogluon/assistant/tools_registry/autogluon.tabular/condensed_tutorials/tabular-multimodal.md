@@ -75,7 +75,7 @@ hyperparameters = get_hyperparameter_config('multimodal')
 from autogluon.tabular import TabularPredictor
 predictor = TabularPredictor(label=label).fit(
     train_data=train_data,
-    hyperparameters=hyperparameters,
+    # Do not specify the hyperparameters argument
     feature_metadata=feature_metadata,
     time_limit=900,  # 15 minutes time limit
 )

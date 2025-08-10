@@ -94,9 +94,7 @@ print("Training Mitra classifier on classification dataset...")
 mitra_predictor = TabularPredictor(label='target')
 mitra_predictor.fit(
     wine_train_data,
-    hyperparameters={
-        'MITRA': {'fine_tune': False}
-    },
+    # Do not specify the hyperparameters argument
    )
 
 print("\nMitra training completed!")
@@ -128,9 +126,7 @@ mitra_predictor.leaderboard(wine_test_data)
 mitra_predictor_ft = TabularPredictor(label='target')
 mitra_predictor_ft.fit(
     wine_train_data,
-    hyperparameters={
-        'MITRA': {'fine_tune': True, 'fine_tune_steps': 10}
-    },
+    # Do not specify the hyperparameters argument
     time_limit=120,  # 2 minutes
    )
 
@@ -162,9 +158,7 @@ mitra_reg_predictor = TabularPredictor(
 )
 mitra_reg_predictor.fit(
     housing_train_data.sample(1000), # sample 1000 rows
-    hyperparameters={
-        'MITRA': {'fine_tune': False}
-    },
+    # Do not specify the hyperparameters argument
 )
 
 # Evaluate regression performance
@@ -192,9 +186,7 @@ tabicl_predictor = TabularPredictor(
 )
 tabicl_predictor.fit(
     wine_train_data,
-    hyperparameters={
-        'TABICL': {},
-    },
+    # Do not specify the hyperparameters argument
 )
 
 # Show prediction probabilities for first few samples
@@ -226,11 +218,7 @@ tabpfnv2_predictor = TabularPredictor(
 )
 tabpfnv2_predictor.fit(
     wine_train_data,
-    hyperparameters={
-        'TABPFNV2': {
-            # TabPFNv2 works best with default parameters on small datasets
-        },
-    },
+    # Do not specify the hyperparameters argument
 )
 
 # Show prediction probabilities for first few samples
@@ -262,10 +250,9 @@ ensemble_predictor = TabularPredictor(
     label='target',
     path='./ensemble_foundation_model'
 ).fit(
-    wine_train_data,
-    hyperparameters=multi_foundation_config,
-    time_limit=300,  # More time for multiple models
-)
+        wine_train_data,
+        time_limit=300,  # More time for multiple models
+    )  # Do not specify the hyperparameters argument
 
 # Evaluate ensemble performance
 ensemble_predictor.leaderboard(wine_test_data)
