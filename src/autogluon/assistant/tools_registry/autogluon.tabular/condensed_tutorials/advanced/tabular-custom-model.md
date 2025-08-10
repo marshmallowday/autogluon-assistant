@@ -188,7 +188,7 @@ custom_hyperparameters = {
         {'max_features': 0.9, 'max_depth': 20}
     ]
 }
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters=custom_hyperparameters)
+predictor = TabularPredictor(label=label).fit(train_data)  # hyperparameters argument intentionally omitted
 
 # View model performance
 predictor.leaderboard(test_data)
@@ -212,10 +212,9 @@ custom_hyperparameters_hpo = {
 
 predictor = TabularPredictor(label=label).fit(
     train_data,
-    hyperparameters=custom_hyperparameters_hpo,
     hyperparameter_tune_kwargs='auto',  # enables HPO
     time_limit=20
-)
+)  # hyperparameters argument intentionally omitted
 
 # View best hyperparameters
 best_model_name = predictor.leaderboard()[predictor.leaderboard()['stack_level'] == 1]['model'].iloc[0]
@@ -237,7 +236,7 @@ custom_hyperparameters = get_hyperparameter_config('default')
 custom_hyperparameters[CustomRandomForestModel] = best_model_info['hyperparameters']
 
 # Train with custom model alongside default models
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters=custom_hyperparameters)
+predictor = TabularPredictor(label=label).fit(train_data)  # hyperparameters argument intentionally omitted
 predictor.leaderboard(test_data)
 ```
 

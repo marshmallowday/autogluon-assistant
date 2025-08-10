@@ -76,9 +76,8 @@ hyperparameter_tune_kwargs = {  # HPO is not performed unless hyperparameter_tun
 predictor = TabularPredictor(label=label, eval_metric=metric).fit(
     train_data,
     time_limit=time_limit,
-    hyperparameters=hyperparameters,
     hyperparameter_tune_kwargs=hyperparameter_tune_kwargs,
-)
+)  # hyperparameters argument intentionally omitted
 ```
 
 We again demonstrate how to use the trained models to predict on the test data.
@@ -112,7 +111,7 @@ save_path = 'agModels-predictClass'  # folder where to store trained models
 
 predictor = TabularPredictor(label=label, eval_metric=metric).fit(train_data,
     num_bag_folds=5, num_bag_sets=1, num_stack_levels=1,
-    hyperparameters = {'NN_TORCH': {'num_epochs': 2}, 'GBM': {'num_boost_round': 20}},  # last  argument is just for quick demo here, omit it in real applications
+    # hyperparameters argument intentionally omitted
 )
 ```
 
@@ -124,7 +123,7 @@ You should not provide `tuning_data` when stacking/bagging, and instead provide 
 predictor = TabularPredictor(label=label, eval_metric='balanced_accuracy', path=save_path).fit(
     train_data, auto_stack=True,
     calibrate_decision_threshold=False,  # Disabling for demonstration in next section
-    hyperparameters={'FASTAI': {'num_epochs': 10}, 'GBM': {'num_boost_round': 200}}  # last 2 arguments are for quick demo, omit them in real applications
+    # hyperparameters argument intentionally omitted
 )
 predictor.leaderboard(test_data)
 ```
@@ -506,7 +505,7 @@ Another option is to specify more lightweight hyperparameters:
 
 
 ```python
-predictor_light = TabularPredictor(label=label, eval_metric=metric).fit(train_data, hyperparameters='very_light', time_limit=30)
+predictor_light = TabularPredictor(label=label, eval_metric=metric).fit(train_data, time_limit=30)  # hyperparameters argument intentionally omitted
 ```
 
 Here you can set `hyperparameters` to either 'light', 'very_light', or 'toy' to obtain progressively smaller (but less accurate) models and predictors. Advanced users may instead try manually specifying particular models' hyperparameters in order to make them faster/smaller.

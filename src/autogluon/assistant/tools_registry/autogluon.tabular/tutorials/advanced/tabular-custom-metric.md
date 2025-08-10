@@ -284,7 +284,7 @@ train_data.head(5)
 ```python
 from autogluon.tabular import TabularPredictor
 
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters='toy')
+predictor = TabularPredictor(label=label).fit(train_data)  # hyperparameters argument intentionally omitted
 
 predictor.leaderboard(test_data)
 ```
@@ -300,7 +300,7 @@ We can also pass our custom metric into the Predictor itself by specifying it du
 
 
 ```python
-predictor_custom = TabularPredictor(label=label, eval_metric=ag_roc_auc_scorer).fit(train_data, hyperparameters='toy')
+predictor_custom = TabularPredictor(label=label, eval_metric=ag_roc_auc_scorer).fit(train_data)  # hyperparameters argument intentionally omitted
 
 predictor_custom.leaderboard(test_data)
 ```

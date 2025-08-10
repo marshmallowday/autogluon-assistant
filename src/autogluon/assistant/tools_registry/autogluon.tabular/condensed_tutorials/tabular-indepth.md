@@ -63,9 +63,8 @@ hyperparameter_tune_kwargs = {
 predictor = TabularPredictor(label=label, eval_metric=metric).fit(
     train_data,
     time_limit=2*60,  # 2 minutes
-    hyperparameters=hyperparameters,
     hyperparameter_tune_kwargs=hyperparameter_tune_kwargs,
-)
+)  # hyperparameters argument intentionally omitted
 
 # Predict and evaluate
 y_pred = predictor.predict(test_data_nolabel)
@@ -91,7 +90,7 @@ predictor = TabularPredictor(label=label, eval_metric=metric).fit(
     num_bag_sets=1,      # number of bagging iterations
     num_stack_levels=1,  # number of stacking levels
     # Reduced hyperparameters for quick demo only
-    hyperparameters={'NN_TORCH': {'num_epochs': 2}, 'GBM': {'num_boost_round': 20}},
+    # hyperparameters argument intentionally omitted
 )
 ```
 
@@ -108,7 +107,7 @@ predictor = TabularPredictor(label=label, eval_metric=metric).fit(
 predictor = TabularPredictor(label=label, eval_metric='balanced_accuracy', path=save_path).fit(
     train_data, auto_stack=True,
     calibrate_decision_threshold=False,  # Disabled for demonstration
-    hyperparameters={'FASTAI': {'num_epochs': 10}, 'GBM': {'num_boost_round': 200}}  # For quick demo only
+    # hyperparameters argument intentionally omitted
 )
 predictor.leaderboard(test_data)
 ```
