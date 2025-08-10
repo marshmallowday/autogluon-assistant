@@ -84,13 +84,13 @@ ag_roc_auc_scorer = make_scorer(
 
 ### With leaderboard
 ```python
-predictor = TabularPredictor(label=label).fit(train_data, hyperparameters='toy')
+predictor = TabularPredictor(label=label).fit(train_data)  # Do not specify the hyperparameters argument
 predictor.leaderboard(test_data, extra_metrics=[ag_roc_auc_scorer, ag_accuracy_scorer])
 ```
 
 ### As evaluation metric
 ```python
-predictor_custom = TabularPredictor(label=label, eval_metric=ag_roc_auc_scorer).fit(train_data, hyperparameters='toy')
+predictor_custom = TabularPredictor(label=label, eval_metric=ag_roc_auc_scorer).fit(train_data)  # Do not specify the hyperparameters argument
 predictor_custom.leaderboard(test_data)
 ```
 

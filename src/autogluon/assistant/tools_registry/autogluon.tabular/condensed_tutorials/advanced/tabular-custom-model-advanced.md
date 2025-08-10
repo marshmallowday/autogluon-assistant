@@ -129,10 +129,6 @@ predictor.fit(
     train_data=train_data,
     feature_metadata=feature_metadata,
     feature_generator=feature_generator,
-    hyperparameters={
-        'GBM': {},
-        DummyModelKeepUnique: {},
-        # Alternative: DummyModel: {'ag_args_fit': {'drop_unique': False}}
-    }
+    # Do not specify the hyperparameters argument
 )
 ```

@@ -29,7 +29,7 @@ hyperparameters = {
 predictor = TabularPredictor(label=label).fit(
     train_data, 
     num_gpus=1,
-    hyperparameters=hyperparameters, 
+    # Do not specify the hyperparameters argument 
 )
 ```
 
@@ -63,7 +63,7 @@ Example with detailed resource allocation:
 predictor.fit(
     num_cpus=32,
     num_gpus=4,
-    hyperparameters={'NN_TORCH': {}},
+    # Do not specify the hyperparameters argument
     num_bag_folds=2,
     ag_args_ensemble={
         'ag_args_fit': {
@@ -75,11 +75,7 @@ predictor.fit(
         'num_cpus': 4,
         'num_gpus': 0.5,
     },
-    hyperparameter_tune_kwargs={
-        'searcher': 'random',
-        'scheduler': 'local',
-        'num_trials': 2
-    }
+    # Do not specify the hyperparameter_tune_kwargs argument
 )
 ```
 
