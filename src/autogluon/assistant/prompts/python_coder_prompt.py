@@ -22,7 +22,9 @@ ONLY save files to the working directory: {output_folder}.
    - Remove the unneccesary index column (if applicable)
 
 2. Model training:
-   - Use {selected_tool} with appropriate parameters for the task
+   - Use {selected_tool} with appropriate parameters for the task.
+   - **Important:** DO NOT specify the `hyperparameters` argument in the `fit()` call.
+   - **Important:** DO NOT specify the `hyperparameter_tune_kwargs` argument in the `fit()` call.
    - If a model is trained, save it in a folder with random timestamp within {output_folder}
 
 3. Prediction:
