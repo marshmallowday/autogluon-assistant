@@ -50,7 +50,7 @@ Return ONLY the Python code, no explanations. The code should be self-contained 
         # Add format instruction if configured
         if self.llm_config.add_coding_format_instruction:
             format_instruction = (
-                "Please format your response with the code in a ```python``` code block to make it easily extractable."
+                "IMPORTANT: You MUST wrap the Python code in a single fenced code block starting with ```python and ending with ```. Return ONLY the Python code, no explanations."
             )
             prompt = f"{prompt}\n\n{format_instruction}"
 
