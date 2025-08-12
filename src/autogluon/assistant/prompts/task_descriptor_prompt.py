@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import Optional
 
 from .base_prompt import BasePrompt
@@ -30,6 +31,11 @@ Be very clear about the problem type (e.g. audio classification/image regression
 
         file_contents = []
         for filename in self.manager.description_files:
+            # Validate filename before attempting to read
+            if not isinstance(filename, str) or not os.path.isfile(filename):
+                logger.warning(f"Description file not found or invalid path, skipping: {filename}")
+                continue
+
             try:
                 with open(filename, "r") as f:
                     content = f.read()
