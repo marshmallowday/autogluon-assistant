@@ -211,7 +211,7 @@ predictor.fit(
 predictor.leaderboard(test_data)
 
 # Feature importance
-predictor.feature_importance(test_data, model="NHITS")
+predictor.feature_importance()
 ```
 
 ## Training with Multiple Hyperparameter Configurations
