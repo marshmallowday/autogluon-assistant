@@ -111,7 +111,7 @@ test_data_transform.head()
 Analyze feature importance to understand model decisions:
 
 ```python
-predictor.feature_importance(test_data)
+predictor.feature_importance()
 ```
 
 The `importance` column estimates how much the evaluation metric would drop if the feature were removed.

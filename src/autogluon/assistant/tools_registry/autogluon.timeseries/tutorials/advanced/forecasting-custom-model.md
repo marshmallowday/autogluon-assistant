@@ -377,7 +377,7 @@ We can also take advantage of other predictor functionality such as `feature_imp
 
 
 ```python
-predictor.feature_importance(test_data, model="NHITS")
+predictor.feature_importance()
 ```
 
 As expected, features `product_category` and `product_subcategory` have zero importance because our implementation ignores categorical features.

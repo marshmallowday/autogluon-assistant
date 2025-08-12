@@ -245,7 +245,7 @@ perf = predictor.evaluate(test_data)
 ## Interpretability (Feature Importance)
 
 ```python
-predictor.feature_importance(test_data)
+predictor.feature_importance()
 ```
 
 Feature importance is computed via permutation-shuffling, quantifying performance drop when a column's values are randomly shuffled. Features with non-positive importance scores may be candidates for removal.

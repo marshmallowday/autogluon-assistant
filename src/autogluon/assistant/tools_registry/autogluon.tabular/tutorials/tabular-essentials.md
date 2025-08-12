@@ -156,7 +156,7 @@ To better understand our trained predictor, we can estimate the overall importan
 
 
 ```python
-predictor.feature_importance(test_data)
+predictor.feature_importance()
 ```
 
 The `importance` column is an estimate for the amount the evaluation metric score would drop if the feature were removed from the data.
