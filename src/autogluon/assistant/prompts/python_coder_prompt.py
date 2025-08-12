@@ -96,7 +96,7 @@ Please provide the complete Python script that accomplishes these tasks, ensurin
         # Add format instruction if configured
         if self.llm_config.add_coding_format_instruction:
             format_instruction = (
-                "Please format your response with the code in a ```python``` code block to make it easily extractable."
+                "IMPORTANT: You MUST wrap the Python code in a single fenced code block starting with ```python and ending with ```. Do not include any text, explanation or note outside of this code block."
             )
             prompt = f"{prompt}\n\n{format_instruction}"
 
