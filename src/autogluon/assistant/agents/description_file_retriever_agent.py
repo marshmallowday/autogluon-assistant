@@ -56,6 +56,10 @@ class DescriptionFileRetrieverAgent(BaseAgent):
 
         description_files = self.description_file_retriever_prompt.parse(response)
 
+        if description_files and "No project description" in description_files[0]:
+            logger.warning("No description files found by DescriptionFileRetrieverAgent.")
+            return []
+
         self.manager.log_agent_end("DescriptionFileRetrieverAgent: description file list extracted.")
 
         return description_files
