@@ -1,6 +1,5 @@
 # Tutorial Prompt Generator Configuration
-
-per_execution_timeout: 86400
+per_execution_timeout: 86400 
 
 # Data Perception
 max_file_group_size_to_show: 5
@@ -25,7 +24,7 @@ llm: &default_llm
   # Note: bedrock is only supported in limited AWS regions
   #       and requires AWS credentials
   provider: bedrock
-  model: "apac.anthropic.claude-sonnet-4-20250514-v1:0"
+  model: "us.anthropic.claude-sonnet-4-20250514-v1:0" 
   max_tokens: 65535
   proxy_url: null
   temperature: 0.1
@@ -37,7 +36,8 @@ llm: &default_llm
 
 coder:
   <<: *default_llm
-  multi_turn: True
+  model: us.anthropic.claude-opus-4-1-20250805-v1:0
+  multi_turn: True 
 
 executer:
   <<: *default_llm
@@ -74,3 +74,4 @@ tool_selector:
   <<: *default_llm
   temperature: 0.0
   top_p: 1.0
+# User-provided custom instructions
