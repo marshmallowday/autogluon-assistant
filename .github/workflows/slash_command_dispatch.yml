@@ -1,5 +1,6 @@
 name: Slash Command Dispatch
 on:
+  workflow_dispatch:
   issue_comment:
     types: [created]
 jobs:
