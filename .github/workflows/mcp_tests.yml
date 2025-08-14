@@ -1,5 +1,6 @@
 name: MCP Tests
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'src/autogluon/mcp/**'
