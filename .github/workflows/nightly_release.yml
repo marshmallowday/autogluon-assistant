@@ -4,6 +4,7 @@
 name: Nightly PyPI Release
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '59 8 * * *'  # Runs at 08:59 UTC every day
   workflow_dispatch:      # Manual trigger for testing
