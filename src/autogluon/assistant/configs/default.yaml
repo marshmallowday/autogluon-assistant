@@ -36,8 +36,7 @@ llm: &default_llm
 
 coder:
   <<: *default_llm
-  model: us.anthropic.claude-opus-4-1-20250805-v1:0
-  multi_turn: True 
+  multi_turn: True
 
 executer:
   <<: *default_llm
