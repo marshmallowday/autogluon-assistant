@@ -129,6 +129,5 @@ predictor.fit(
     train_data=train_data,
     feature_metadata=feature_metadata,
     feature_generator=feature_generator,
-    # Do not specify the hyperparameters argument
 )
 ```

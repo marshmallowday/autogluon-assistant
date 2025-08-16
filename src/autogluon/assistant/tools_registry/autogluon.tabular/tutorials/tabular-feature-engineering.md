@@ -95,7 +95,7 @@ To get more details, we should call the pipeline as part of `TabularPredictor.fi
 ```python
 df = pd.concat([dfx, dfy], axis=1)
 predictor = TabularPredictor(label='label')
-predictor.fit(df, feature_generator=auto_ml_pipeline_feature_generator)  # Do not specify the hyperparameters argument
+predictor.fit(df, feature_generator=auto_ml_pipeline_feature_generator)
 ```
 
 Reading the output, note that:

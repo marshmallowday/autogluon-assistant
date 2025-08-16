@@ -56,7 +56,6 @@ Mitra is a state-of-the-art tabular foundation model that excels on small datase
 mitra_predictor = TabularPredictor(label='target')
 mitra_predictor.fit(
     wine_train_data,
-    # Do not specify the hyperparameters argument
 )
 
 # Evaluate
@@ -69,7 +68,6 @@ mitra_predictor.leaderboard(wine_test_data)
 mitra_predictor_ft = TabularPredictor(label='target')
 mitra_predictor_ft.fit(
     wine_train_data,
-    # Do not specify the hyperparameters argument
     time_limit=120  # 2 minutes
 )
 ```
@@ -84,7 +82,6 @@ mitra_reg_predictor = TabularPredictor(
 )
 mitra_reg_predictor.fit(
     housing_train_data.sample(1000),  # sample 1000 rows
-    # Do not specify the hyperparameters argument
 )
 ```
 
@@ -99,7 +96,6 @@ tabicl_predictor = TabularPredictor(
 )
 tabicl_predictor.fit(
     wine_train_data,
-    # Do not specify the hyperparameters argument
 )
 ```
 
@@ -114,7 +110,6 @@ tabpfnv2_predictor = TabularPredictor(
 )
 tabpfnv2_predictor.fit(
     wine_train_data,
-    # Do not specify the hyperparameters argument
 )
 ```
 
@@ -135,7 +130,6 @@ ensemble_predictor = TabularPredictor(
     path='./ensemble_foundation_model'
 ).fit(
     wine_train_data,
-    # Do not specify the hyperparameters argument
     time_limit=300  # More time for multiple models
 )
 

@@ -76,8 +76,6 @@ hyperparameter_tune_kwargs = {  # HPO is not performed unless hyperparameter_tun
 predictor = TabularPredictor(label=label, eval_metric=metric).fit(
     train_data,
     time_limit=time_limit,
-    # Do not specify the hyperparameters argument
-    # Do not specify the hyperparameter_tune_kwargs argument
 )
 ```
 
@@ -124,7 +122,6 @@ You should not provide `tuning_data` when stacking/bagging, and instead provide 
 predictor = TabularPredictor(label=label, eval_metric='balanced_accuracy', path=save_path).fit(
     train_data, auto_stack=True,
     calibrate_decision_threshold=False,  # Disabling for demonstration in next section
-    # Do not specify the hyperparameters argument
 )
 predictor.leaderboard(test_data)
 ```
@@ -506,7 +503,7 @@ Another option is to specify more lightweight hyperparameters:
 
 
 ```python
-predictor_light = TabularPredictor(label=label, eval_metric=metric).fit(train_data, time_limit=30)  # Do not specify the hyperparameters argument
+predictor_light = TabularPredictor(label=label, eval_metric=metric).fit(train_data, time_limit=30)
 ```
 
 Here you can set `hyperparameters` to either 'light', 'very_light', or 'toy' to obtain progressively smaller (but less accurate) models and predictors. Advanced users may instead try manually specifying particular models' hyperparameters in order to make them faster/smaller.

@@ -197,6 +197,5 @@ predictor.fit(
     train_data=train_data,
     feature_metadata=feature_metadata,  # feature metadata with your overrides
     feature_generator=feature_generator,  # your custom feature generator that handles the overrides
-    # Do not specify the hyperparameters argument
 )
 ```
