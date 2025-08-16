@@ -195,7 +195,6 @@ Now we will train a TabularPredictor on the dataset, using the feature metadata 
 from autogluon.tabular import TabularPredictor
 predictor = TabularPredictor(label=label).fit(
     train_data=train_data,
-    # Do not specify the hyperparameters argument
     feature_metadata=feature_metadata,
     time_limit=900,
 )

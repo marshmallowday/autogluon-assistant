@@ -22,7 +22,6 @@ hyperparameters = {
 predictor = TabularPredictor(label=label).fit(
     train_data, 
     num_gpus=1,
-    # Do not specify the hyperparameters argument 
 )
 ```
 
@@ -78,7 +77,6 @@ As an example, consider the following scenario
 predictor.fit(
     num_cpus=32,
     num_gpus=4,
-    # Do not specify the hyperparameters argument
     num_bag_folds=2,
     ag_args_ensemble={
         'ag_args_fit': {
@@ -90,7 +88,6 @@ predictor.fit(
         'num_cpus': 4,
         'num_gpus': 0.5,
     },
-    # Do not specify the hyperparameter_tune_kwargs argument
 )
 ```
 

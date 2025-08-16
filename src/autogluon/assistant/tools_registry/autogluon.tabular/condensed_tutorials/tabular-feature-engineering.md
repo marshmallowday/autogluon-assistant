@@ -51,7 +51,7 @@ mypipeline = PipelineFeatureGenerator(
 
 # Use custom feature generator with predictor
 predictor = TabularPredictor(label='label')
-predictor.fit(df, feature_generator=mypipeline)  # Do not specify the hyperparameters argument
+predictor.fit(df, feature_generator=mypipeline)
 ```
 
 ## Missing Value Handling
