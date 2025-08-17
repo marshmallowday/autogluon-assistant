@@ -241,7 +241,7 @@ perf = predictor.evaluate(test_data)
 ## Interpretability (Feature Importance)
 
 ```python
-predictor.feature_importance()
+predictor.feature_importance(validation data) #*DO NOT use train.csv or test.csv here.* If validation data doesn't exist, skip this process.
 ```
 
 Feature importance is computed via permutation-shuffling, quantifying performance drop when a column's values are randomly shuffled. Features with non-positive importance scores may be candidates for removal.

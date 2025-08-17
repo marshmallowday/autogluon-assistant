@@ -156,7 +156,7 @@ To better understand our trained predictor, we can estimate the overall importan
 
 
 ```python
-predictor.feature_importance()
+predictor.feature_importance(validation data) #*DO NOT use train.csv or test.csv here.* If validation data doesn't exist, skip this process.
 ```
 
 The `importance` column is an estimate for the amount the evaluation metric score would drop if the feature were removed from the data.

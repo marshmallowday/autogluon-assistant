@@ -211,7 +211,7 @@ predictor.fit(
 predictor.leaderboard(test_data)
 
 # Feature importance
-predictor.feature_importance()
+predictor.feature_importance(validation data) #*DO NOT use train.csv or test.csv here.* If validation data doesn't exist, skip this process.
 ```
 
 ## Training with Multiple Hyperparameter Configurations
