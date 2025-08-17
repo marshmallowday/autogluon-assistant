@@ -111,7 +111,7 @@ test_data_transform.head()
 Analyze feature importance to understand model decisions:
 
 ```python
-predictor.feature_importance()
+predictor.feature_importance(validation data) #*DO NOT use train.csv or test.csv here.* If validation data doesn't exist, skip this process.
 ```
 
 The `importance` column estimates how much the evaluation metric would drop if the feature were removed.

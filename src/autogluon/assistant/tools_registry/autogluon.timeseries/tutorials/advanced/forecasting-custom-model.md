@@ -377,7 +377,7 @@ We can also take advantage of other predictor functionality such as `feature_imp
 
 
 ```python
-predictor.feature_importance()
+predictor.feature_importance(validation data) #*DO NOT use train.csv or test.csv here.* If validation data doesn't exist, skip this process.
 ```
 
 As expected, features `product_category` and `product_subcategory` have zero importance because our implementation ignores categorical features.
